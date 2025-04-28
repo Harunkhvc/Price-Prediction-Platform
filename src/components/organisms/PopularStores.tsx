@@ -1,6 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import StoreCard from "../molecules/StoreCard";
+import SectionHeader from "../atoms/SectionHeader";
+import StorefrontIcon from '@mui/icons-material/Storefront'; // Örnek ikon
 
 const stores = [
   { imageUrl: "/images/store_logo/hepsi.png", storeName: "Hepsiburada" },
@@ -16,18 +18,10 @@ const PopularStores = () => {
         padding: "2rem 0",
       }}
     >
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: "bold",
-          fontSize: "1.5rem",
-          textAlign: "left",
-          paddingLeft: "1rem",
-          marginBottom: "1rem",
-        }}
-      >
-        Popular Stores
-      </Typography>
+      <SectionHeader
+        title="Popular Stores"
+        icon={<StorefrontIcon />}
+      />
 
       <Box
         sx={{

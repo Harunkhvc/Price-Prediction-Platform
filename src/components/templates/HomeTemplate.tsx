@@ -1,9 +1,8 @@
-// src/components/templates/HomeTemplate.tsx
-import React from 'react'
+import React from 'react';
 
 interface HomeTemplateProps {
-  header: React.ReactNode
-  children: React.ReactNode
+  header: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const HomeTemplate: React.FC<HomeTemplateProps> = ({ header, children }) => (
@@ -16,6 +15,6 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({ header, children }) => (
       © 2025 YourCompany
     </footer>
   </div>
-)
+);
 
-export default HomeTemplate
+export default HomeTemplate;

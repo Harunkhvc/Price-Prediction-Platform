@@ -1,6 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import BrandCard from "../molecules/BrandCard";
+import SectionHeader from "../atoms/SectionHeader";
+import StarsIcon from '@mui/icons-material/Stars'; // Örnek ikon
 
 const brands = [
   { imageUrl: "/images/brand_logo/oppo.png", brandName: "Oppo" },
@@ -18,18 +20,10 @@ const PopularBrands = () => {
         padding: "1rem 0",
       }}
     >
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: "bold",
-          fontSize: "1.5rem",
-          textAlign: "left",
-          paddingLeft: "1rem",
-          marginBottom: "1rem",
-        }}
-      >
-        Popular Brands
-      </Typography>
+      <SectionHeader
+        title="Popular Brands"
+        icon={<StarsIcon />}
+      />
 
       <Box
         sx={{
