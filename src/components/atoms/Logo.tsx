@@ -1,14 +1,15 @@
+// src/components/atoms/Logo.tsx
 import React from 'react'
 import Typography from '@mui/material/Typography'
 
 const Logo: React.FC = () => (
   <Typography
-    variant="h5"                     // boyut
+    variant="h5"
     sx={{
-      color: 'primary.main',          // tema rengi (yeşil)
+      color: '#008000',    // logo rengi yeşil
       fontWeight: 'bold',
-      fontFamily: 'sans-serif',       // dilediğin fontu kullanabilirsin
-      letterSpacing: '.1em',          // biraz aralık
+      fontFamily: 'sans-serif',
+      letterSpacing: '.1em',
     }}
   >
     PİNTİ

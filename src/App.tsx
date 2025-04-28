@@ -1,21 +1,24 @@
 // src/App.tsx
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/organisms/Header'
 import Toolbar from '@mui/material/Toolbar'
-import PopularBrands from './components/organisms/PopularBrands'
-import PopularStores from './components/organisms/PopularStores';
+import HomePage from './pages/HomePage'
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      {/* Sabit header */}
       <Header />
-      {/* Toolbar burada spacer görevi görür */}
+
+      {/* Spacer: fixed AppBar altına içerik yerleşsin diye */}
       <Toolbar />
-      {/* Buraya page içeriğiniz gelecek */}
-      
-      <PopularBrands />
-      
-      <PopularStores />
-    </>
+
+      {/* Sayfa içeriği */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* İleride ekleyeceğin diğer sayfalar */}
+      </Routes>
+    </BrowserRouter>
   )
 }
