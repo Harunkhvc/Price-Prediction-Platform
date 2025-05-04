@@ -6,6 +6,7 @@ import PriceDropSection from '../components/organisms/PriceDropSection';
 import PopularStores from '../components/organisms/PopularStores';
 import PopularBrands from '../components/organisms/PopularBrands';
 import { Product } from '../components/molecules/ProductCard';
+import SpecialChoicesSection from '../components/organisms/SpecialChoicesSection';
 
 // Mock veri dizisi:
 const mockProducts: Product[] = [
@@ -37,7 +38,7 @@ const HomePage: React.FC = () => {
     <HomeTemplate header={<Header />}>
       <PopularProductsSection products={mockProducts} />
       <PriceDropSection products={mockProducts} />
-      
+      <SpecialChoicesSection products={mockProducts} />
       {/* Arkadaşının eklediği 3. bölüm buraya gelecek */}
       
       <PopularStores />
