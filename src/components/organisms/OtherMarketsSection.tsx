@@ -38,7 +38,7 @@ const allSellers = [
   },
 ];
 
-const PriceComparisonSection: React.FC<PriceComparisonSectionProps> = ({ products }) => {
+const OtherMarketsSection: React.FC<PriceComparisonSectionProps> = ({ products }) => {
   const product = products[0];
   const [selectedStore, setSelectedStore] = useState<string>('Tümü');
 
@@ -103,4 +103,4 @@ const PriceComparisonSection: React.FC<PriceComparisonSectionProps> = ({ product
   );
 };
 
-export default PriceComparisonSection;
+export default OtherMarketsSection;

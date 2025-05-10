@@ -6,7 +6,7 @@ import PriceDropSection from '../components/organisms/PriceDropSection';
 import PopularStores from '../components/organisms/PopularStores';
 import PopularBrands from '../components/organisms/PopularBrands';
 import SpecialChoicesSection from '../components/organisms/SpecialChoicesSection';
-import PriceComparisonSection from '../components/organisms/PriceComparisonSection'; // ✅ yeni eklenen section
+import PriceComparisonSection from '../components/organisms/OtherMarketsSection'; // ✅ yeni eklenen section
 
 import { Product } from '../components/molecules/ProductCard';
 
