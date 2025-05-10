@@ -1,22 +1,26 @@
-// src/components/organisms/SpecialChoicesSection.tsx
-import React from 'react'
-import Box from '@mui/material/Box'
-import SectionHeader from '../atoms/SectionHeader'
-import ProductCard, { Product } from '../molecules/ProductCard'
+import React from 'react';
+import SectionHeader from '../atoms/SectionHeader';
+import ProductCard, { Product } from '../molecules/ProductCard';
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
 
 interface SpecialChoicesSectionProps {
-  products: Product[]
+  products: Product[];
 }
 
-const SpecialChoicesSection: React.FC<SpecialChoicesSectionProps> = ({ products }) => (
-  <Box mb={6}>
-    <SectionHeader title="Pintinin Seçimi" icon={<span>🧠</span>} />
-    <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', py: 1 }}>
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+const SpecialChoicesSection: React.FC<SpecialChoicesSectionProps> = ({ products }) => {
+  return (
+    <Box sx={{ my: 4 }}>
+      <Box sx={{ pl: 1 }}>
+        <SectionHeader title="Özel Seçimler" icon={<StarIcon />} />
+      </Box>
+      <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', py: 1, pl: 1 }}>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Box>
     </Box>
-  </Box>
-)
+  );
+};
 
-export default SpecialChoicesSection
+export default SpecialChoicesSection;

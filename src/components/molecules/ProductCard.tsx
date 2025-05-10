@@ -1,30 +1,30 @@
 // src/components/molecules/ProductCard.tsx
-import React from 'react'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import React from 'react';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import BorderBox from '../atoms/BorderBox'; // ✅ yeni
 
 export interface Product {
-  id: string
-  name: string
-  imageUrl: string
-  cheapestStore: string
-  cheapestPrice: string
-  otherStore: string
-  otherPrice: string
-  offersCount: number
+  id: string;
+  name: string;
+  imageUrl: string;
+  cheapestStore: string;
+  cheapestPrice: string;
+  otherStore: string;
+  otherPrice: string;
+  offersCount: number;
 }
 
 interface ProductCardProps {
-  product: Product
+  product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
-  <Card sx={{ minWidth: 200, position: 'relative' }}>
+  <BorderBox sx={{ position: 'relative', minWidth: 200 }}>
     {/* Bildirimi tetikleyen zil ikonu */}
     <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
       <Button size="small">
@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
         {product.offersCount} fiyatı incele
       </Button>
     </CardContent>
-  </Card>
-)
+  </BorderBox>
+);
 
-export default ProductCard
+export default ProductCard;

@@ -5,8 +5,10 @@ import PopularProductsSection from '../components/organisms/PopularProductsSecti
 import PriceDropSection from '../components/organisms/PriceDropSection';
 import PopularStores from '../components/organisms/PopularStores';
 import PopularBrands from '../components/organisms/PopularBrands';
-import { Product } from '../components/molecules/ProductCard';
 import SpecialChoicesSection from '../components/organisms/SpecialChoicesSection';
+import PriceComparisonSection from '../components/organisms/PriceComparisonSection'; // ✅ yeni eklenen section
+
+import { Product } from '../components/molecules/ProductCard';
 
 // Mock veri dizisi:
 const mockProducts: Product[] = [
@@ -30,7 +32,6 @@ const mockProducts: Product[] = [
     otherPrice: '33.599,00 TL',
     offersCount: 40,
   },
-  // Diğer ürünler...
 ];
 
 const HomePage: React.FC = () => {
@@ -39,10 +40,9 @@ const HomePage: React.FC = () => {
       <PopularProductsSection products={mockProducts} />
       <PriceDropSection products={mockProducts} />
       <SpecialChoicesSection products={mockProducts} />
-      {/* Arkadaşının eklediği 3. bölüm buraya gelecek */}
-      
       <PopularStores />
       <PopularBrands />
+      <PriceComparisonSection products={mockProducts} /> {/* ✅ buraya eklendi */}
     </HomeTemplate>
   );
 };
