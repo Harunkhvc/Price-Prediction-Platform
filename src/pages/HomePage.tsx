@@ -37,7 +37,13 @@ const mockProducts: Product[] = [
 const HomePage: React.FC = () => {
   return (
     <HomeTemplate header={<Header />}>
+      <PopularProductsSection products={mockProducts} />
+      <PriceDropSection products={mockProducts} />
+      <SpecialChoicesSection products={mockProducts} />
+      <PopularStores />
+      <PopularBrands />
       <FilterSidebar />
+      <PriceComparisonSection products={mockProducts} />
     </HomeTemplate>
   );
 };
