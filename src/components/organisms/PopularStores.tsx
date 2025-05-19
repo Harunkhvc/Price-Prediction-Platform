@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Box } from "@mui/material";
 import StoreCard from "../molecules/StoreCard";
 import SectionHeader from "../atoms/SectionHeader";

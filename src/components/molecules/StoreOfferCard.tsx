@@ -13,6 +13,7 @@ export interface StoreOffer {
   tagline: string;
   price: string;
   url: string;
+  rating: string;
 }
 
 interface StoreOfferCardProps {

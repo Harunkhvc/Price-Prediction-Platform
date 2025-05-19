@@ -12,6 +12,7 @@ const sampleOffers: StoreOffer[] = [
     logoUrl: 'https://via.placeholder.com/100x40.png?text=HB',
     tagline: '6 fiyat arasında en ucuz',
     price: '44.999,00 TL',
+    rating: '8.7',
     url: 'https://www.hepsiburada.com/',
   },
 ];
