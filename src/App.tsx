@@ -1,9 +1,8 @@
 // src/App.tsx
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/organisms/Header'
-import Toolbar from '@mui/material/Toolbar'
-import HomePage from './pages/HomePage'
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/organisms/Header';
+import Toolbar from '@mui/material/Toolbar';
+import AppRoute from './AppRoute';
 
 export default function App() {
   return (
@@ -15,10 +14,7 @@ export default function App() {
       <Toolbar />
 
       {/* Sayfa içeriği */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* İleride ekleyeceğin diğer sayfalar */}
-      </Routes>
+      <AppRoute />
     </BrowserRouter>
-  )
+  );
 }
