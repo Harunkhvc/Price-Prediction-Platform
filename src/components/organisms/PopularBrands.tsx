@@ -13,17 +13,16 @@ const brands = [
 
 const PopularBrands = () => {
   return (
-    <Box sx={{ width: "100%", py: 4 }}>
-      <Box sx={{ pl: 1 }}>
-        <SectionHeader title="Popular Brands" icon={<StarsIcon />} />
-      </Box>
+    <Box sx={{ width: "100%", py: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <SectionHeader title="Popüler Markalar" icon={<StarsIcon />} />
 
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
           gap: "1rem",
-          paddingLeft: "1rem",
+          justifyContent: "center",
+          mt: 2,
         }}
       >
         {brands.map((brand, index) => (
@@ -37,5 +36,6 @@ const PopularBrands = () => {
     </Box>
   );
 };
+
 
 export default PopularBrands;

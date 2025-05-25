@@ -1,5 +1,5 @@
 // src/components/organisms/FilterSidebar.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {Typography, Divider, Button } from '@mui/material';
 import BrandFilter from '../molecules/BrandFilter';
 import ModelFilter from '../molecules/ModelFilter';
