@@ -1,14 +1,12 @@
 // src/components/molecules/ProductCard.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import React from 'react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 
 export interface Product {
   id: string;
@@ -27,15 +25,9 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
   <Card sx={{ minWidth: 200, position: 'relative' }}>
-    {/* Bildirim düğmesi; tıklamayı kart linkinden ayırmak için CardActionArea dışında */}
-    <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}>
-      <Button
-        size="small"
-        onClick={(e) => {
-          e.stopPropagation(); // kart tıklamasını engelle
-          // burada istersen ayrı bir bildirim dialogu açabilirsin
-        }}
-      >
+    {/* Bildirimi tetikleyen zil ikonu */}
+    <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
+      <Button size="small">
         <NotificationsNoneIcon fontSize="small" />
       </Button>
     </Box>
@@ -75,12 +67,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
           </Typography>
         </Box>
 
-        <Button variant="outlined" size="small" fullWidth>
-          {product.offersCount} fiyatı incele
-        </Button>
-      </CardContent>
-    </CardActionArea>
+      <Button variant="outlined" size="small" fullWidth>
+        {product.offersCount} fiyatı incele
+      </Button>
+    </CardContent>
   </Card>
-);
+)
 
 export default ProductCard;

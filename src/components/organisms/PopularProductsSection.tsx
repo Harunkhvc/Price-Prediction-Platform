@@ -1,22 +1,26 @@
-// src/components/organisms/PopularProductsSection.tsx
-import React from 'react'
-import Box from '@mui/material/Box'
-import SectionHeader from '../atoms/SectionHeader'
-import ProductCard, { Product } from '../molecules/ProductCard'
+import React from 'react';
+import SectionHeader from '../atoms/SectionHeader';
+import ProductCard, { Product } from '../molecules/ProductCard';
+import Box from '@mui/material/Box';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 interface PopularProductsSectionProps {
-  products: Product[]
+  products: Product[];
 }
 
-const PopularProductsSection: React.FC<PopularProductsSectionProps> = ({ products }) => (
-  <Box mb={6}>
-    <SectionHeader title="Popüler Ürünler" icon={<span>🔥</span>} />
-    <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', py: 1 }}>
-      {products.map(p => (
-        <ProductCard key={p.id} product={p} />
-      ))}
+const PopularProductsSection: React.FC<PopularProductsSectionProps> = ({ products }) => {
+  return (
+    <Box sx={{ my: 4 }}>
+      <Box sx={{ pl: 1 }}>
+        <SectionHeader title="Popüler Ürünler" icon={<ShoppingCartIcon />} />
+      </Box>
+      <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', py: 1, pl: 1 }}>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Box>
     </Box>
-  </Box>
-)
+  );
+};
 
-export default PopularProductsSection
+export default PopularProductsSection;

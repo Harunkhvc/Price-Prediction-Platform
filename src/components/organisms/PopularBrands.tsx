@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import BrandCard from "../molecules/BrandCard";
 import SectionHeader from "../atoms/SectionHeader";
-import StarsIcon from '@mui/icons-material/Stars'; // Örnek ikon
+import StarsIcon from '@mui/icons-material/Stars';
 
 const brands = [
   { imageUrl: "/images/brand_logo/oppo.png", brandName: "Oppo" },
@@ -13,16 +13,10 @@ const brands = [
 
 const PopularBrands = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        padding: "1rem 0",
-      }}
-    >
-      <SectionHeader
-        title="Popular Brands"
-        icon={<StarsIcon />}
-      />
+    <Box sx={{ width: "100%", py: 4 }}>
+      <Box sx={{ pl: 1 }}>
+        <SectionHeader title="Popular Brands" icon={<StarsIcon />} />
+      </Box>
 
       <Box
         sx={{

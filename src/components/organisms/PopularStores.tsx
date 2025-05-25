@@ -1,8 +1,8 @@
 
 import { Box } from "@mui/material";
-import StoreCard from "../molecules/StoreCard";
+import StoreCard from "../molecules/PopularStoreCard";
 import SectionHeader from "../atoms/SectionHeader";
-import StorefrontIcon from '@mui/icons-material/Storefront'; // Örnek ikon
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
 const stores = [
   { imageUrl: "/images/store_logo/hepsi.png", storeName: "Hepsiburada" },
@@ -12,16 +12,10 @@ const stores = [
 
 const PopularStores = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        padding: "2rem 0",
-      }}
-    >
-      <SectionHeader
-        title="Popular Stores"
-        icon={<StorefrontIcon />}
-      />
+    <Box sx={{ width: "100%", py: 4 }}>
+      <Box sx={{ pl: 1 }}>
+        <SectionHeader title="Popular Stores" icon={<StorefrontIcon />} />
+      </Box>
 
       <Box
         sx={{

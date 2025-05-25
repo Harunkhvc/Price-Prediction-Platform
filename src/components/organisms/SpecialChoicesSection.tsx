@@ -2,17 +2,17 @@ import React from 'react';
 import SectionHeader from '../atoms/SectionHeader';
 import ProductCard, { Product } from '../molecules/ProductCard';
 import Box from '@mui/material/Box';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import StarIcon from '@mui/icons-material/Star';
 
-interface PriceDropSectionProps {
+interface SpecialChoicesSectionProps {
   products: Product[];
 }
 
-const PriceDropSection: React.FC<PriceDropSectionProps> = ({ products }) => {
+const SpecialChoicesSection: React.FC<SpecialChoicesSectionProps> = ({ products }) => {
   return (
     <Box sx={{ my: 4 }}>
       <Box sx={{ pl: 1 }}>
-        <SectionHeader title="Fiyatı Düşenler" icon={<ArrowDownwardIcon />} />
+        <SectionHeader title="Özel Seçimler" icon={<StarIcon />} />
       </Box>
       <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', py: 1, pl: 1 }}>
         {products.map((product) => (
@@ -23,4 +23,4 @@ const PriceDropSection: React.FC<PriceDropSectionProps> = ({ products }) => {
   );
 };
 
-export default PriceDropSection;
+export default SpecialChoicesSection;
