@@ -1,5 +1,4 @@
 // src/App.tsx
-import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/organisms/Header'
 import Toolbar from '@mui/material/Toolbar'
