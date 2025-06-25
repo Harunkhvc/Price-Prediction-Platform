@@ -1,15 +1,7 @@
 // src/components/molecules/ProductCard.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActionArea from '@mui/material/CardActionArea';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Card, CardContent, CardActionArea, Typography, Box, Button, Paper } from '@mui/material';
 
 export interface Product {
   id: string;
@@ -20,6 +12,8 @@ export interface Product {
   otherStore: string;
   otherPrice: string;
   offersCount: number;
+  stok: string;
+  kampanya: string;
 }
 
 interface ProductCardProps {
@@ -29,67 +23,143 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
   <Card
     sx={{
-      width: 240,
+      maxWidth: 360,
+      width: '100%',
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
-      position: 'relative',
+      borderRadius: 4,
       boxShadow: 3,
-      borderRadius: 2,
       overflow: 'hidden',
+      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      '&:hover': {
+        transform: 'translateY(-6px)',
+        boxShadow: 6,
+      },
+      bgcolor: 'background.paper',
     }}
   >
-    {/* Zil ikonu */}
-    <Box sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}>
-      <IconButton size="small" color="default">
-        <NotificationsNoneIcon fontSize="small" />
-      </IconButton>
+    {/* Görsel bölümü, sabit yükseklik ve objectFit ile */}
+    <Box
+      component={Link}
+      to={`/product/${product.id}`}
+      sx={{
+        display: 'block',
+        width: '100%',
+        height: 240,
+        bgcolor: '#f5f5f5',
+        overflow: 'hidden',
+        textDecoration: 'none',
+      }}
+    >
+      <Box
+        component="img"
+        src={product.imageUrl}
+        alt={product.name}
+        sx={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+        }}
+      />
     </Box>
 
-    {/* Tıklanabilir alan (görsel + içerik) */}
+    {/* İçerik ve kampanya/stok */}
     <CardActionArea
       component={Link}
       to={`/product/${product.id}`}
-      sx={{ flexGrow: 1 }}
+      sx={{ textDecoration: 'none', flexGrow: 1 }}
     >
-      {/* Ürün görseli */}
-      <CardMedia
-        component="img"
-        image={product.imageUrl}
-        alt={product.name}
-        sx={{ height: 160, objectFit: 'cover' }}
-      />
-
-      <CardContent sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
-        <Typography variant="subtitle1" noWrap>
+      <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 600,
+            lineHeight: 1.2,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
           {product.name}
         </Typography>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <Typography variant="caption" color="text.secondary">
+        {/* En ucuz mağaza */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="caption" color="text.secondary" noWrap>
             {product.cheapestStore}
           </Typography>
-          <Typography variant="caption" color="success.main" fontWeight="bold">
-            EN UCUZ
-          </Typography>
+          <Box
+            sx={{
+              ml: 1,
+              px: 1,
+              py: 0.25,
+              bgcolor: 'success.light',
+              borderRadius: 1,
+              display: 'inline-flex',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="caption" color="success.dark" fontWeight="bold">
+              EN UCUZ
+            </Typography>
+          </Box>
         </Box>
 
-        <Typography variant="h6" fontWeight="bold">
+        <Typography variant="h6" fontWeight="bold" sx={{ color: 'success.main' }}>
           {product.cheapestPrice}
         </Typography>
 
-        <Typography variant="body2" color="text.secondary">
-          {product.otherStore}{' '}
-          <Typography component="span" variant="body2" color="text.primary">
+        {/* Diğer mağaza ve eski fiyat */}
+        <Typography variant="body2" color="text.secondary" noWrap>
+          <Typography component="span" variant="body2" color="text.primary" fontWeight="500">
+            {product.otherStore}:{' '}
+          </Typography>
+          <Typography
+            component="span"
+            variant="body2"
+            color="text.secondary"
+            sx={{ textDecoration: 'line-through' }}
+          >
             {product.otherPrice}
           </Typography>
+        </Typography>
+
+        {/* Kampanya */}
+        {product.kampanya && product.kampanya.toLowerCase() !== 'yok' && (
+          <Paper sx={{ bgcolor: '#f57c00', color: 'white', px: 1.5, py: 0.5, borderRadius: 1, mt: 1 }}>
+            <Typography variant="body2" fontWeight={600}>
+              Kampanya: {product.kampanya}
+            </Typography>
+          </Paper>
+        )}
+
+        {/* Stok */}
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          Stok: {product.stok}
         </Typography>
       </CardContent>
     </CardActionArea>
 
-    {/* Alt buton */}
-    <Box sx={{ p: 2 }}>
-      <Button variant="contained" size="small" fullWidth>
+    {/* Fiyatları incele butonu */}
+    <Box sx={{ p: 3, pt: 0 }}>
+      <Button
+        variant="contained"
+        size="medium"
+        fullWidth
+        component={Link}
+        to={`/product/${product.id}`}
+        sx={{
+          bgcolor: 'primary.main',
+          color: 'primary.contrastText',
+          fontWeight: 600,
+          textTransform: 'none',
+          py: 1.2,
+          fontSize: 15,
+          '&:hover': { bgcolor: 'primary.dark' },
+        }}
+      >
         {product.offersCount} fiyatı incele
       </Button>
     </Box>

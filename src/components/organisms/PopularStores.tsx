@@ -1,17 +1,29 @@
 // src/components/organisms/PopularStores.tsx
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import StoreCard from '../molecules/PopularStoreCard';
 import SectionHeader from '../atoms/SectionHeader';
 import StorefrontIcon from '@mui/icons-material/Storefront';
-
-const stores = [
-  { imageUrl: '/images/store_logo/hepsi.png', storeName: 'Hepsiburada' },
-  { imageUrl: '/images/store_logo/trendyol.png', storeName: 'Trendyol' },
-  { imageUrl: '/images/store_logo/n11.png', storeName: 'N11' },
-];
+import { useNavigate } from 'react-router-dom';
+import { getAllSites } from '../../api-client/SiteApi';
+import { SiteDto } from '../../types/SiteTypes';
 
 const PopularStores: React.FC = () => {
+  const [stores, setStores] = useState<SiteDto[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await getAllSites();
+        setStores(data);
+      } catch (err) {
+        console.error('Mağazalar alınırken hata:', err);
+      }
+    })();
+  }, []);
+
   return (
     <Box sx={{ width: '100%', py: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <SectionHeader title="Popüler Mağazalar" icon={<StorefrontIcon />} />
@@ -25,17 +37,16 @@ const PopularStores: React.FC = () => {
           mt: 2,
         }}
       >
-        {stores.map((store, index) => (
+        {stores.map((store) => (
           <StoreCard
-            key={index}
-            imageUrl={store.imageUrl}
-            storeName={store.storeName}
+            key={store.id}
+            storeName={store.name}
+            onClick={() => navigate(`/store/${store.id}`)}
           />
         ))}
       </Box>
     </Box>
   );
 };
-
 
 export default PopularStores;

@@ -4,35 +4,64 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import { Search } from 'lucide-react';
 
-const SearchBar: React.FC = () => (
+export interface SearchBarProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearch: () => void;
+  onClear?: () => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, onSearch, onClear }) => (
   <Box
     sx={{
       display: 'flex',
       alignItems: 'center',
-      width: 400,
-      border: 1,
-      borderColor: 'primary.main',  // yeşil çerçeve
+      width: 600,
+      height: 48,
+      border: 3,
+      borderColor: 'primary.main',
       borderRadius: 2,
-      overflow: 'hidden'
+      overflow: 'hidden',
     }}
   >
     <InputBase
+      value={value}
+      onChange={onChange}
+      onKeyDown={e => {
+        if (e.key === 'Enter') {
+          onSearch();
+          e.preventDefault();
+        }
+      }}
       placeholder="Neyi en ucuza almak istersin?"
       sx={{
         flex: 1,
         px: 2,
-        '& .MuiInputBase-input': { py: 1.5 }
+        '& .MuiInputBase-input': {
+          py: 1.5,
+          fontSize: '1rem',
+        },
       }}
     />
+
+    {value && onClear && (
+      <IconButton onClick={onClear} sx={{ ml: 1 }}>
+        &times;
+      </IconButton>
+    )}
+
     <IconButton
+      onClick={onSearch}
       sx={{
+        width: 48,
+        height: 48,
         bgcolor: 'primary.main',
         color: 'common.white',
-        px: 2,
-        '&:hover': { bgcolor: 'primary.dark' }
+        borderRadius: 0,
+        '&:hover': { bgcolor: 'primary.dark' },
       }}
     >
-      <Search size={18} />
+      <Search size={24} />
     </IconButton>
   </Box>
 );

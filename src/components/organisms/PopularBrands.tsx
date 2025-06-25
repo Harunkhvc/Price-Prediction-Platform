@@ -1,17 +1,22 @@
+// src/components/organisms/PopularBrands.tsx
+import React from 'react';
 import { Box } from "@mui/material";
 import BrandCard from "../molecules/BrandCard";
 import SectionHeader from "../atoms/SectionHeader";
 import StarsIcon from '@mui/icons-material/Stars';
+import { useNavigate } from 'react-router-dom';
 
 const brands = [
   { imageUrl: "/images/brand_logo/oppo.png", brandName: "Oppo" },
-  { imageUrl: "/images/brand_logo/msi.png", brandName: "Msi" },
-  { imageUrl: "/images/brand_logo/xiaomi.png", brandName: "Xiaomi" },
+  { imageUrl: "/images/brand_logo/msi.png",   brandName: "Msi" },
+  { imageUrl: "/images/brand_logo/xiaomi.png",brandName: "Xiaomi" },
   { imageUrl: "/images/brand_logo/apple.png", brandName: "Apple" },
-  { imageUrl: "/images/brand_logo/samsung.png", brandName: "Samsung" },
+  { imageUrl: "/images/brand_logo/samsung.png",brandName: "Samsung" },
 ];
 
-const PopularBrands = () => {
+const PopularBrands: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ width: "100%", py: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <SectionHeader title="Popüler Markalar" icon={<StarsIcon />} />
@@ -25,17 +30,17 @@ const PopularBrands = () => {
           mt: 2,
         }}
       >
-        {brands.map((brand, index) => (
+        {brands.map(brand => (
           <BrandCard
-            key={index}
+            key={brand.brandName}
             imageUrl={brand.imageUrl}
             brandName={brand.brandName}
+            onClick={() => navigate(`/brand/${encodeURIComponent(brand.brandName)}`)}
           />
         ))}
       </Box>
     </Box>
   );
 };
-
 
 export default PopularBrands;

@@ -1,13 +1,18 @@
+// src/components/molecules/BrandCard.tsx
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import BorderBox from '../atoms/BorderBox';
-interface BrandCardProps {
+
+export interface BrandCardProps {
   imageUrl: string;
   brandName: string;
+  onClick?: () => void;
 }
 
-const BrandCard = ({ imageUrl, brandName }: BrandCardProps) => {
+const BrandCard: React.FC<BrandCardProps> = ({ imageUrl, brandName, onClick }) => {
   return (
     <BorderBox
+      onClick={onClick}
       sx={{
         width: '140px',
         height: '160px',
@@ -19,10 +24,10 @@ const BrandCard = ({ imageUrl, brandName }: BrandCardProps) => {
         backgroundColor: '#f9f9f9',
         boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05)',
         transition: 'all 0.3s ease',
-        cursor: 'pointer',
+        cursor: onClick ? 'pointer' : 'default',
         '&:hover': {
           boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.1)',
-          transform: 'scale(1.05)',
+          transform: onClick ? 'scale(1.05)' : 'none',
           backgroundColor: '#ffffff',
         },
         gap: '0.8rem',

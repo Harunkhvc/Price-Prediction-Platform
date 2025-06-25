@@ -1,14 +1,17 @@
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 import BorderBox from '../atoms/BorderBox';
+import { getVendorLogo } from '../../utils/vendorLogos';  // logoları buradan çekiyoruz
 
-interface StoreCardProps {
-  imageUrl: string;
+export interface StoreCardProps {
   storeName: string;
+  onClick?: () => void;
 }
 
-const StoreCard = ({ imageUrl, storeName }: StoreCardProps) => {
+const StoreCard: React.FC<StoreCardProps> = ({ storeName, onClick }) => {
   return (
     <BorderBox
+      onClick={onClick}
       sx={{
         width: '250px',
         height: '100px',
@@ -19,16 +22,16 @@ const StoreCard = ({ imageUrl, storeName }: StoreCardProps) => {
         backgroundColor: '#ffffff',
         boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.05)',
         transition: 'all 0.3s ease',
-        cursor: 'pointer',
+        cursor: onClick ? 'pointer' : 'default',
         '&:hover': {
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-          transform: 'translateY(-4px)',
+          transform: onClick ? 'translateY(-4px)' : 'none',
         },
       }}
     >
       <Box
         component="img"
-        src={imageUrl}
+        src={getVendorLogo(storeName)}
         alt={storeName}
         sx={{
           width: '50px',
@@ -36,13 +39,7 @@ const StoreCard = ({ imageUrl, storeName }: StoreCardProps) => {
           objectFit: 'contain',
         }}
       />
-      <Box
-        sx={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
         <Typography
           variant="h6"
           sx={{

@@ -1,10 +1,9 @@
-// src/components/molecules/StoreOfferCard.tsx
 import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
+import { getVendorLogo } from '../../utils/vendorLogos';
 
 export interface StoreOffer {
   vendor: string;
-  logoUrl: string;
   tagline: string;
   price: string;
   rating: string;
@@ -32,14 +31,13 @@ const StoreOfferCard: React.FC<Props> = ({ offer }) => {
         textDecoration: 'none',
       }}
     >
-      {/* Logo boyutunu büyüttük */}
       <Box
         component="img"
-        src={offer.logoUrl}
+        src={getVendorLogo(offer.vendor)}
         alt={offer.vendor}
         sx={{
-          width: 100,        // ← Burada logo genişliğini piksel olarak ayarlayabilirsiniz
-          height: 'auto',    // Oran korunsun
+          width: 100,
+          height: 'auto',
           objectFit: 'contain',
         }}
       />
